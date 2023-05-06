@@ -794,7 +794,7 @@ def to_dict(model):
 @application.route("/jobs/status/<string:status>")
 def jobs(id=None, ids=None, status=None):
     choices = [x[1] for x in JobModel._meta.fields["status"].choices]
-    if id:
+    if id is not None:
         job = to_dict(JobModel.get(JobModel.id == id))
     elif ids:
         ids = ids.split(",")
